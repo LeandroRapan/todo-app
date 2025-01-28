@@ -1,0 +1,41 @@
+$colors-light: (
+  background: #f5f5f5,
+  text: #262626,
+  border: #ccc,
+  task-bg: #ffffff,
+  task-hover: #ececec,
+  primary: #007bff,
+  primary-hover: #0056b3,
+  shadow: rgba(0, 0, 0, 0.2)
+);
+
+$colors-dark: (
+  background: #121212,
+  text: #e0e0e0,
+  border: #444,
+  task-bg: #1c1c1c,
+  task-hover: #333,
+  primary: #0056b3,
+  primary-hover: #003d80,
+  shadow: rgba(255, 255, 255, 0.2)
+);
+
+$gradient-colors: (rgb(213, 85, 93), rgb(219, 153, 22), rgb(178, 6, 230), rgb(59, 154, 255));
+$gradient-thickness: 30px;
+$container-padding: 35px;
+$container-width: 90%;
+$container-height: 60vh;
+
+@function color($theme, $key) {
+  @return map-get($theme, $key);
+}
+
+@mixin gradient-border($colors, $thickness) {
+  background: linear-gradient(to right, nth($colors, 1), nth($colors, 2)) top left/$thickness $thickness no-repeat,
+              linear-gradient(to bottom, nth($colors, 2), nth($colors, 4)) bottom right/$thickness $thickness no-repeat,
+              linear-gradient(to bottom, nth($colors, 1), nth($colors, 3)) top left/$thickness $thickness no-repeat,
+              linear-gradient(to right, nth($colors, 3), nth($colors, 4)) bottom right/$thickness $thickness no-repeat;
+  background-size: 100% $thickness, $thickness 100%, $thickness 100%, 100% $thickness;
+  background-origin: border-box;
+  background-repeat: no-repeat;
+}

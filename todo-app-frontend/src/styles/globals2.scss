@@ -1,0 +1,191 @@
+
+*{
+  margin:0;
+  padding: 0;
+}
+$gradient-colors: (rgb(213, 85, 93), rgb(219, 153, 22), rgb(178, 6, 230), rgb(59, 154, 255));
+$gradient-thickness: 30px;
+$container-padding: 35px;
+$container-width: 90%;
+$container-height: 60vh;
+
+// Mixin para el gradiente de bordes
+@mixin gradient-border($colors, $thickness) {
+  background: linear-gradient(to right, nth($colors, 1), nth($colors, 2)) top left/$thickness $thickness no-repeat,
+              linear-gradient(to bottom, nth($colors, 2), nth($colors, 4)) bottom right/$thickness $thickness no-repeat,
+              linear-gradient(to bottom, nth($colors, 1), nth($colors, 3)) top left/$thickness $thickness no-repeat,
+              linear-gradient(to right, nth($colors, 3), nth($colors, 4)) bottom right/$thickness $thickness no-repeat;
+  background-size: 100% $thickness, $thickness 100%, $thickness 100%, 100% $thickness;
+  background-origin: border-box;
+  background-repeat: no-repeat;
+}
+
+// Estilos principales
+body {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-clip: padding-box;
+  font-family: Arial, sans-serif;
+}
+#__next {
+    width: 100%;
+    max-width: 800px;
+  
+    
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+#app-container {
+  position: relative;
+  border-radius: 10px;
+  width: $container-width;
+  height: $container-height;
+  padding: $container-padding;
+  @include gradient-border($gradient-colors, $gradient-thickness);
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-clip: padding-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+// Tasklist
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  
+}
+
+// Taskitem
+.task-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s;
+  margin: 10px;
+
+  &:hover {
+    background-color: #ececec;
+  }
+
+  .task-text {
+    flex: 1;
+    margin-right: 8px;
+  }
+
+  .task-actions {
+    display: flex;
+    gap: 4px;
+  }
+}
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.task-checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  appearance: none; 
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  transition: background-color 0.3s, border-color 0.3s;
+
+  &:checked {
+    background-color: #007bff; 
+    border-color: #0056b3;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 4px;
+      height: 9px;
+      border: solid #fff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      position: relative;
+      
+      left: 4px;
+    }
+  }
+}
+
+// Taskinput
+.task-input {
+  display: flex;
+  gap: 8px;
+
+  input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
+
+.task-filters{
+  display:flex;
+  justify-content: flex-start;
+  gap: 30px;
+  margin-left: 30px;
+  
+  button {
+    color:#262a2f;
+    border: none;
+    background-color: white;
+    font-size: medium;
+    font-weight:500;
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    margin:10px;
+    position: relative;
+    &:active{
+      
+      color:#ef1b1b;
+    }
+    &.active {
+      color: #007bff; 
+
+      &:after {
+        content: ""; 
+        position:absolute;
+        left: -10px; 
+        right: -10px; 
+        bottom: -2px;
+        height: 2px;
+      
+        background-color: #007bff; 
+      }
+    }
+  }
+  
+}

@@ -1,0 +1,87 @@
+.task-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid color($colors-light, border);
+    border-radius: 4px;
+    background-color: color($colors-light, task-bg);
+    transition: background-color 0.3s;
+    margin: 10px;
+  
+    &:hover {
+      background-color: color($colors-light, task-hover);
+    }
+  
+    &.dark-mode {
+      border-color: color($colors-dark, border);
+      background-color: color($colors-dark, task-bg);
+  
+      &:hover {
+        background-color: color($colors-dark, task-hover);
+      }
+    }
+  
+    .task-text {
+      flex: 1;
+      margin-right: 8px;
+      color: color($colors-light, text);
+  
+      &.dark-mode {
+        color: color($colors-dark, text);
+      }
+    }
+  
+    .task-actions {
+      display: flex;
+      gap: 4px;
+    }
+  }
+  
+  .task-item.completed .task-text {
+    text-decoration: line-through;
+    color: #999;
+  
+    &.dark-mode {
+      color: #666;
+    }
+  }
+  
+  .task-checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    appearance: none; 
+    border: 2px solid color($colors-light, border);
+    border-radius: 4px;
+    background-color: color($colors-light, task-bg);
+    transition: background-color 0.3s, border-color 0.3s;
+  
+    &:checked {
+      background-color: color($colors-light, primary); 
+      border-color: color($colors-light, primary-hover);
+  
+      &::after {
+        content: "";
+        display: block;
+        width: 4px;
+        height: 9px;
+        border: solid #fff;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+        position: relative;
+        left: 4px;
+      }
+    }
+  
+    &.dark-mode {
+      border-color: color($colors-dark, border);
+      background-color: color($colors-dark, task-bg);
+  
+      &:checked {
+        background-color: color($colors-dark, primary);
+        border-color: color($colors-dark, primary-hover);
+      }
+    }
+  }

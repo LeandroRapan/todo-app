@@ -1,0 +1,41 @@
+
+.task-input {
+  display: flex;
+  gap: 8px;
+
+  input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid color($colors-light, border);
+    border-radius: 4px;
+    font-size: 16px;
+
+    &.dark-mode {
+      border-color: color($colors-dark, border);
+      background-color: color($colors-dark, task-bg);
+      color: color($colors-dark, text);
+    }
+  }
+
+  button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: color($colors-light, primary);
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+
+    &:hover {
+      background-color: color($colors-light, primary-hover);
+    }
+
+    &.dark-mode {
+      background-color: color($colors-dark, primary);
+
+      &:hover {
+        background-color: color($colors-dark, primary-hover);
+      }
+    }
+  }
+}

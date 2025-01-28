@@ -1,0 +1,16 @@
+@use '../abstracs/variables' as *;
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: color($colors-light, background);
+  color: color($colors-light, text);
+
+  &.dark-mode {
+    background-color: color($colors-dark, background);
+    color: color($colors-dark, text);
+  }
+}

@@ -1,0 +1,11 @@
+@use './abstracs/variables' as *;
+@import 'layouts/body';
+@import './components/appContainer';
+@import './components/taskList';
+@import './components/taskItem';
+@import './components/taskInput';
+@import './components/taskFilters';
+* {
+  margin: 0;
+  padding: 0;
+}
